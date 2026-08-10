@@ -10,7 +10,7 @@ import { CustomInput } from '../src/CustomInput';
 import axios from 'axios';
 
 // Componente da Tela de Registro/Cadastro (RF003)
-export const RegisterScreen = ({ navigation }: any) => {
+export default function RegisterScreen ({ navigation }: any){
   // Estado local para o campo Nome
   const [name, setName] = useState('');
   // Estado local para o campo E-mail
@@ -40,7 +40,7 @@ export const RegisterScreen = ({ navigation }: any) => {
             // Ativa a indicação visual de carregamento no botão
             setLoading(true);
             // Faz a chamada HTTP enviando os dados informados para a API backend em Laravel (RF003)
-            await axios.post('https://sua-api.com/api/register', {
+            await axios.post('https://minha-api.com/api/register', {
                 name,
                 email,
                 password
@@ -71,7 +71,7 @@ export const RegisterScreen = ({ navigation }: any) => {
                 {/* Banner Superior Estilo Gamer com a frase "CREATE YOUR CHARACTER" */}
                 <View style={styles.bannerContainer}>
                     <ImageBackground
-                        source={require('..assets/images/geekcolletor/Registro-blue.png')}
+                        source={require('../assets/images/geekcolletor/Registro-blue.png')}
                         style={styles.bannerBackground}
                         resizeMode="cover"
                     ></ImageBackground>
@@ -131,67 +131,3 @@ export const RegisterScreen = ({ navigation }: any) => {
         </LinearGradient>
     );
 };
-
-// Objeto de estilos visualmente alinhado às capturas de tela fornecidas
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  
-  scrollContent: {
-    flexGrow: 1,
-    paddingBottom: 30, // Margem inferior de segurança na rolagem
-  },
-  
-  bannerContainer: {
-    height: 180,
-    width: '100%',
-    borderBottomWidth: 2,
-    borderColor: '#00F0FF',
-  },
-  
-  bannerBackground: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  
-  formContainer: {
-    paddingHorizontal: 30,
-    paddingTop: 10,
-    alignItems: 'center',
-  },
-  
-  logoHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'flex-end',
-    marginBottom: 10,
-  },
-  
-  logoIcon: {
-    width: 32,
-    height: 32,
-    marginRight: 6,
-  },
-
-  button: {
-    backgroundColor: '#F59E0B',
-    borderRadius: 25,
-    width: '100%',
-    height: 48,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 15,
-    shadowColor: '#000',
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-  
-  buttonText: {
-    color: '#FFFFFF',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-});
